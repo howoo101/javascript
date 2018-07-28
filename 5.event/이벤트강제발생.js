@@ -1,0 +1,15 @@
+process.on('exit', (code)=> {
+    console.log('안녕히 계세요')
+})
+
+
+//이벤트를 강제로 발생시킵니다.
+process.emit('exit');
+process.emit('exit');
+process.emit('exit');
+process.emit('exit');
+// 강제 종료시키고 싶을때
+//process.exit()
+
+//프로그램 실행 중
+console.log('프로그램 실행 중')
