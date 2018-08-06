@@ -11,3 +11,16 @@ custom.on('tick', (code) => {
 
 //이벤트를 강제로 발생
 custom.emit('tick');
+
+function on(e, h) {
+    this.evnet.push(e);
+}
+function emit(e){
+    this.event[e]();
+}
+var o = {
+    event : []
+}
+o.on = on;
+o.emit = emit;
+console.log(custom)
