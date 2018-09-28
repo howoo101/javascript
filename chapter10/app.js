@@ -23,7 +23,7 @@ app.listen(7777, function() {
 })
 
 //라우트를 수행합니다. 
-app.get('/',function (req,resonse) {
+app.get('/',function (req,response) {
     //파일 읽기
     fs.readFile('list.html', 'utf8', function(err,data) {
         client.query('select * from products', function(err,results) {
@@ -73,7 +73,7 @@ app.get('/edit:id',function (req,response) {
         });
     });
 });
-app.post('/edit:id',function (req,res) {
+app.post('/edit:id',function (req,response) {
     //변수 선언
     var body = request.body;
 
@@ -82,12 +82,9 @@ app.post('/edit:id',function (req,res) {
         body.name,body.modelnumber, body.series, req.params.id
     ], function() {
         //응답
-        res.redirect('/');
+        response.redirect('/');
     });
 });
 
-
-
-client.query('use mysql');
 
 
