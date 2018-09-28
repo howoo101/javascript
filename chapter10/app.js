@@ -56,7 +56,7 @@ app.post('/insert',function (req,response) {
         body.name, body.modelnumber, body.series
     ], function() {
         //응답
-        resonse.redirect('/');
+        response.redirect('/');
     })
 });
 app.get('/edit:id',function (req,response) {
