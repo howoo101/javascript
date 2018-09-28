@@ -23,31 +23,31 @@ app.listen(7777, function() {
 })
 
 //라우트를 수행합니다. 
-app.get('/',function (req,res) {
+app.get('/',function (req,resonse) {
     //파일 읽기
     fs.readFile('list.html', 'utf8', function(err,data) {
-        client.query('select * from products', function(err,res) {
+        client.query('select * from products', function(err,results) {
             //응답
-            res.send(ejs.render(data, {
-                data:res
-            }))
+            response.send(ejs.render(data, {
+                data: results
+            }));
         });
-    })
+    });
 });
-app.get('/delete/:id',function (req,res) {
+app.get('/delete/:id',function (req,response) {
     client.query('delete from products where id=?', [req.params.id], function () {
         //응답
-        res.redirect('/');
+        response.redirect('/');
     })
 });
-app.get('/insert',function (req,res) {
+app.get('/insert',function (req,response) {
     //파일 일기
     fs.readFile('insert.html','utf8',function (err,data) {
         //응답
         response.send(data);
     })
 });
-app.post('/insert',function (req,res) {
+app.post('/insert',function (req,response) {
     //변수 선언
     var body = request.body;
 
@@ -59,16 +59,16 @@ app.post('/insert',function (req,res) {
         resonse.redirect('/');
     })
 });
-app.get('/edit:id',function (req,res) {
+app.get('/edit:id',function (req,response) {
     //파일 읽기
     fs.readFile('edit.html', 'utf8', function (err,data) {
         //db 쿼리 실행
         client.query('select * from products where id = ?', [
             req.params.id
-        ], function (err,res) {
+        ], function (err,result) {
             //응답
             response.send(ejs.render(data, {
-                data: res[0]
+                data: result[0]
             }));
         });
     });
