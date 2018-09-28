@@ -49,7 +49,7 @@ app.get('/insert',function (req,response) {
 });
 app.post('/insert',function (req,response) {
     //변수 선언
-    var body = request.body;
+    var body = req.body;
 
     //db 쿼리 실행
     client.query('insert into products (name, modelnumber, series) values (?,?,?)', [
@@ -75,7 +75,7 @@ app.get('/edit:id',function (req,response) {
 });
 app.post('/edit:id',function (req,response) {
     //변수 선언
-    var body = request.body;
+    var body = req.body;
 
     //db 쿼리 실행
     client.query('update products set name=?, modelnumber=?, series=? where id=?', [
