@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" name="sports" id="a"> 전체
+    <input type="checkbox" name="sports" value="A"> A
+    <input type="checkbox" name="sports" value="B"> B
+    <input type="checkbox" name="sports" value="C"> C
+    
+    <textarea name="" id="area" cols="30" rows="10">
+
+    </textarea>
+
+    <script>
+        //1. 내가 다루려는 요소를 선택한다.
+        var list = document.getElementsByName("sports");
+        var area = document.getElementById('area'); // textarea
+            //1.1 전체 버튼의 경우에는 checkbox버튼들 전체다 클릭 될수 있게 해준다. 이벤트처리 따로 해야된다.
+        var data = []; //체크된 데이터들 보관함
+        //전체버튼 이벤트처리
+        list[0].onclick = function() {  
+            var checked = list[0]["checked"] //버튼이 체크되었는지 판별하는 변수
+            data = []
+            if(checked){ //전체 버튼 눌렀을때
+                for(let i = 1; i < list.length; i++) {  //2. 선택한 요소의 이벤트발생하면 그 데이터를 가져온다.  data에 들어있음
+                    data.push(list[i].value);
+                    list[i]["checked"] = true;
+                }
+                // console.log(data); 
+            }else { // 전체 버튼 해제했을때
+                data = [];
+                for(let i = 1; i < list.length; i++) {
+                    list[i]["checked"] = false;
+                }
+                // console.log(data)
+            }
+            area.innerText = data.toString();//3. 그데이터를 textarea에 써준다.
+        }
+        //나머지 각각의 버튼 이벤트 처리
+        for(let i = 1; i < list.length; i++) {
+            list[i].onclick = function() {
+                data = []
+                for(let j = 1; j < list.length; j++) {
+                    var checked = list[j]["checked"];
+                    if(checked) {
+                        data.push(list[j].value)
+                    }else {
+                        data.splice(j-1,1)
+                    }
+                }
+                //모든버튼눌렸을때 전체도 체크 되게 한다.
+                    // => 버튼 누를때마다 다 체크되었는지 확인해야하는데 how?
+                    // data.length가 list.length -1일때 로 확인한다.
+                if(data.length == list.length-1) list[0]["checked"] = true;
+                else if(data.length == 0) list[0]["checked"] = false;
+                
+                area.innerText = data.toString();
+            }
+        }
+</script>
+
+</body>
+</html>

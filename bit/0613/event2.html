@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <select style="width:100px" name="" id="left" multiple >
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+        <option value="d">d</option>
+    </select>
+    <input type="button" value=">>" id="rightAll">
+    <input type="button" value=">" id="rightB">
+    <input type="button" value="<" id="leftB">
+    <input type="button" value="<<" id="leftAll">
+    <select style="width:100px" name="" id="right" multiple>
+
+    </select>
+
+    <script>
+        let left = document.getElementById('left');
+        let right = document.getElementById('right');
+        let lb = document.getElementById('leftB');
+        let lAb = document.getElementById('leftAll');
+        let rb = document.getElementById('rightB');
+        let rAb = document.getElementById('rightAll');
+        //select 부분을 클릭하면 클릭한 부분을 가져와야하는데 how?  중복코드 줄여야한다.
+        //options, selectedOptions
+        let data = []
+        
+        left.onchange = function() {
+            data = [];
+            for(let i = 0; i < left.length; i++) {
+                if(left[i]["selected"] == true) {
+                    data.push(left[i])
+                }
+            }
+        }
+        right.onchange = function() {
+            data = [];
+            for(let i = 0; i < right.length; i++) {
+                if(right[i]["selected"] == true) {
+                    data.push(right[i])
+                }
+            }
+        }
+        lb.onclick = function() {
+            if(left.length != 4){
+                for(let i = 0; i < data.length; i++) 
+                    left.add(data[i])
+            }
+        }
+        rb.onclick = function() {
+            if(right.length != 4){
+            for(let i = 0; i < data.length; i++)
+                right.add(data[i])
+            }
+        }
+        rAb.onclick = function() {
+            for(let i = 0; i < left.length;){
+                right.add(left[i])
+            }
+        }
+
+        lAb.onclick = function() {
+            for(let i = 0; i < right.length;) {
+                left.add(right[i])
+            }
+        }
+    </script>
+</body>
+
+</html>
