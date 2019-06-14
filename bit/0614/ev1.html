@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="checkbox" value="전체">전체
+    <input type="checkbox" value="야구">야구
+    <input type="checkbox" value="축구">축구
+    <input type="checkbox" value="농구">농구
+    <input type="checkbox" value="배구">배구
+    <input type="checkbox" value="볼링">볼링 <br>
+    <textarea name="ta" id="ta" cols="30" rows="10"></textarea>
+    
+    <script>
+        //브라우저의 페이지(html)가 모두 로딩된 후에 바로 발생하는 이벤트
+        window.onload = function() {
+            // 1. 요소에 접근한다.
+            // checkbox 클릭하면 체크박스의 클릭이벤트에 함수를 등록
+            var chkboxArr = document.getElementsByTagName('input')
+            //2. 이벤트를 등록한다(연결)
+            
+            
+            for(let i = 0; i < chkboxArr.length; i++) {
+                chkboxArr[i].onclick = function() {
+                    //체크 박스를 클릭하면, textarea에 클릭된 종목을 출력한다.
+                    //1.textarea의 참조를 얻어와야한다.
+                    var ta = document.getElementById('ta');
+
+                    //전체가 클릭되면, 다른 체크박스의 체크상태를 변경한다.
+                    if(this == chkboxArr[0])
+                        for(let x = 0; x < chkboxArr.length; x++) {
+                            chkboxArr[x].checked = this.checked;
+                            this.checked ? (ta.value += chkboxArr[x].value) : ta.value = "" 
+                        }
+                    else {
+                        if(this.checked) ta.value += this.value
+                        else ta.value = ta.value.substr(ta.value.indexOf(chkboxArr[1].value,chkboxArr[1].value.length))
+                       }
+                    }
+                }
+            }
+    </script>
+</body>
+
+</html>

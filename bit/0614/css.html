@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <style>
+        /* link visited hover active  */
+        a:link, a:visited {
+            background-color: red;
+            color:white;
+            padding:14px 25px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        a:hover, :active {
+            background-color: cadetblue;
+        }
+
+        table {
+            border-collapse: collapse;
+            width: 50%;
+        }
+
+        tr,td ,th{
+            padding: 10px;
+            text-align: left;
+            border-bottom: 1px solid darkslategrey;
+        }
+
+        tr:hover {
+            background-color: darkgray
+        }
+
+        .container {
+            position: relative;
+        }
+
+        .center {
+            position : absolute;
+            left: 0;
+            top: 50%;
+            width: 100%;
+            text-align: center;
+            font-size: 30px;
+            color: blueviolet
+        }
+
+        img {
+            width: 100%;
+            height: auto;
+            opacity: 0.3;
+        }
+        p::before {
+            content: "저것이 ";
+        }
+        p::after {
+            content: "!!!";
+        }
+    </style>
+</head>
+<body>
+    <p>java 다</p>
+    <a href=""> This is a link</a>
+    <table>
+        <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Saving</th>
+        </tr>
+        <tr>
+            <td>peter</td>
+            <td>Kim</td>
+            <td>100</td>
+        </tr>
+        <tr>
+            <td>Tae</td>
+            <td>Kim</td>
+            <td>200</td>
+        </tr>
+    </table>
+    <div class="container">
+        <img src="s.jpg" alt="">
+        <div class="center">~~~~~~~~~~~~~~~~~~~~~~~~~~~~Centered~~~~~~~~~~~~~~~~~~~~~~~~~</div>
+    </div>
+</body>
+</html>
