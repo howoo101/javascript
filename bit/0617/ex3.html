@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <select name="" id="">
+        <option value="1" >1</option>
+        <option value="2" selected>2</option>
+        <option value="3">3</option>
+        <option value="4">4</option>
+        <option value="5">5</option>
+    </select>
+
+    <table>
+        <tr><th>이름</th><th>혈액형</th><th>지역</th></tr>
+        <tr><td>강민수</td><td>AB</td><td>서울시</td></tr>
+        <tr><td>강자바</td><td>B</td><td>미네소타</td></tr>
+
+    </table>
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+        $(document).ready(function() {
+            // setTimeout(function() {
+            //     //변수 선언
+            //     var value = $('select > option:selected').val();
+
+            //     alert(value)
+            // }, 1000);
+            $('tr:odd').css('backgrond','gray');
+            $('tr:even').css('background','skyblue')
+            $('tr:first').css('background','#000000').css('color','#FFFFFF')
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    
+    <script src="jquery-3.4.1.min.js"></script>
+    <script>
+        function test(options) {
+           options = $.extend({
+               //기본값 
+               valueA : 10,
+               valueB: 20,
+               valueC : 30
+           },options);
+            console.log(options.valueA+ ':' + options.valueB + ":" + options.valueC)
+        }
+        var obj = $.extend({a:10}, {a:20, b:20}, {c:30})    
+        alert(JSON.stringify(obj));
+  
+        test({
+            valueA: 52,
+            valueC:273
+        })
+    </script>
+</body>
+</html>
