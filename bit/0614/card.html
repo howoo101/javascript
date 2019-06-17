@@ -94,7 +94,9 @@
                     +'<img src="img/cb.jpg" alt="">'
                 +'</div>'
                 +'<div class="flip-card-front">'
-                    +`<img src="img/${arr[i]}.png" alt="">`
+                    +`<img src="img/${arr[i]}.png" 
+                    data-kind=${arr[i].substring(0,1)}
+                    data-num=${arr[i].substring(1,arr[i].length)}>`
                 +'</div>'
             +'</div>'
             }
@@ -148,27 +150,26 @@
             }
 
             var that = data;
-            var img = [] 
-            //비교하기위한 카드색,숫자
-            for(let i = 0; i < that.length; i++) {
-                var imgSrc = that[i].children[1].children[0].attributes[0].nodeValue;
-                var imgStr = imgSrc.substring(imgSrc.indexOf('/')+1,imgSrc.indexOf('.'))
-                img.push(imgStr)
-            }
+            num1 = data[0].lastChild.firstChild.getAttribute('data-num')
+            kind1 = data[0].lastChild.firstChild.getAttribute('data-kind')
+            num2 = data[1].lastChild.firstChild.getAttribute('data-num')
+            kind2 = data[1].lastChild.firstChild.getAttribute('data-kind')
             
             if(what.id != 'show'){
-                if(img[0].substring(1,img[0].length) == img[1].substring(1,img[1].length) &&( (img[0].substring(0,1) == 'h' && img[1].substring(0,1)=='d') || 
-                (img[0].substring(0,1) == 'c' && img[1].substring(0,1)=='s') || (img[0].substring(0,1) == 's' && img[1].substring(0,1)=='c') 
-                || (img[0].substring(0,1) == 'd' && img[1].substring(0,1)=='h')) ){
+                if(num1 == num2 &&( (kind1 == 'h' && kind2=='d') ||  (kind1 == 'c' && kind2=='s') ||
+                 (kind1 == 's' && kind2=='c') || (kind1 == 'd' && kind2=='h')) ){
                     alert("맞았어")
+                    for(data in that)
+                        correct.push(that[data])
+                    if(correct.length == (arr.length)) alert("끝")
                 }
                 else {
-                    alert("틀렸어")
                     setTimeout(function () {
                         for (let i = 0; i < that.length; i++) {
                             that[i].style.transform = "";
                         }
-                    }, 2*1000)
+                    alert("틀렸어")
+                    }, 1*1000)
                 }
             } 
             else {
