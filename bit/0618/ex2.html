@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<input type="checkbox" name="all" id="all-check">
+<label for="all">All</label>
+<div class="check-item">
+    <input type="checkbox">
+    <label for="">OptionA</label>
+    <input type="checkbox">
+    <label for="">OptionB</label>
+    <input type="checkbox">
+    <label for="">OptionC</label>
+</div>
+
+    <script src="../jquery-3.4.1.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#all-check').change(function() {
+                if(this.checked)
+                    $('.check-item').children().prop('checked',true)
+                else
+                    $('.check-item').children().prop('checked',false)
+
+            })
+        })
+    </script>
+</body>
+</html>

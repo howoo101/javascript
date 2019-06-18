@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <select style="width:100px" name="" id="left" multiple >
+        <option value="a">a</option>
+        <option value="b">b</option>
+        <option value="c">c</option>
+        <option value="d">d</option>
+    </select>
+    <input type="button" value=">>" id="rightAll">
+    <input type="button" value=">" id="rightB">
+    <input type="button" value="<" id="leftB">
+    <input type="button" value="<<" id="leftAll">
+    <select style="width:100px" name="" id="right" multiple>
+
+    </select>
+    <script src="../jquery-3.4.1.min.js"></script>
+    <script>
+        let left = $('#left');
+        let right = $('#right');
+        let lb = $('#leftB');
+        let lAb = $('#leftAll');
+        let rb = $('#rightB');
+        let rAb = $('#rightAll');
+        //select 부분을 클릭하면 클릭한 부분을 가져와야하는데 how?  
+//중복코드 줄여야한다.
+
+        let data = []
+        
+        left.on('change',function() {
+            data = [];
+            left.children().each(function(idx,item) {
+                if(left.children().eq(idx).prop("selected"))
+                    data.push(item)
+            })
+            console.log(data)
+        })
+        right.on('change' ,function() {
+            data = [];
+            right.children().each(function(idx,item) {
+                if(left.children().eq(idx).prop("selected"))
+                data.push(item)
+            })
+        })
+        lb.on('click', function() {
+            if(left.prop('length') != 4){
+                left.append(data)
+            }
+        })
+        rb.on('click',function() {
+            if(right.children().length != 4){
+                right.append(data)
+            }
+        })
+        rAb.on('click',function() {
+            right.html(left.children())
+        })
+
+        lAb.on('click',function() {
+            left.html(right.children())
+        })
+    </script>
+</body>
+
+</html>
