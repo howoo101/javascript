@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <title>함수형 전환</title>
+    <script src="js/_.js"></script>
 </head>
 <body>
     <script>
@@ -48,25 +49,6 @@
   console.log(ages);
 
 
-// 2. _filter, _map으로 리팩토링
-//걸러내는 함수
-function _filter(list, predic) {
-  var new_list = [];
-  for(var i = 0; i < list.length; i++) {
-    if(predic(list[i])) {
-      new_list.push(list[i]);
-    }
-  }
-  return new_list;
-}
-
-function _map(list, mapper) {
-  var new_list = [];
-  for(var i = 0; i < list.length; i++) {
-    new_list.push(mapper(list[i]));
-  }
-  return new_list;
-}
 
 //대입문보단 함수통과식으로
 // var over_30 = _filter(users, function(user) { return user.age >= 30; });
